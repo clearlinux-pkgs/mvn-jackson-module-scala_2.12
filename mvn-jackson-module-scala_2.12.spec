@@ -4,7 +4,7 @@
 #
 Name     : mvn-jackson-module-scala_2.12
 Version  : 2.6.7.1
-Release  : 1
+Release  : 2
 URL      : https://github.com/FasterXML/jackson-module-scala/archive/jackson-module-scala-2.6.7.1.tar.gz
 Source0  : https://github.com/FasterXML/jackson-module-scala/archive/jackson-module-scala-2.6.7.1.tar.gz
 Source1  : https://repo1.maven.org/maven2/com/fasterxml/jackson/module/jackson-module-scala_2.12/2.6.7.1/jackson-module-scala_2.12-2.6.7.1.jar
