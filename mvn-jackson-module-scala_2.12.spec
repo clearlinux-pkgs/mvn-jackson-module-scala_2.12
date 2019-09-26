@@ -4,15 +4,18 @@
 #
 Name     : mvn-jackson-module-scala_2.12
 Version  : 2.6.7.1
-Release  : 2
+Release  : 3
 URL      : https://github.com/FasterXML/jackson-module-scala/archive/jackson-module-scala-2.6.7.1.tar.gz
 Source0  : https://github.com/FasterXML/jackson-module-scala/archive/jackson-module-scala-2.6.7.1.tar.gz
 Source1  : https://repo1.maven.org/maven2/com/fasterxml/jackson/module/jackson-module-scala_2.12/2.6.7.1/jackson-module-scala_2.12-2.6.7.1.jar
 Source2  : https://repo1.maven.org/maven2/com/fasterxml/jackson/module/jackson-module-scala_2.12/2.6.7.1/jackson-module-scala_2.12-2.6.7.1.pom
+Source3  : https://repo1.maven.org/maven2/com/fasterxml/jackson/module/jackson-module-scala_2.12/2.9.9/jackson-module-scala_2.12-2.9.9.jar
+Source4  : https://repo1.maven.org/maven2/com/fasterxml/jackson/module/jackson-module-scala_2.12/2.9.9/jackson-module-scala_2.12-2.9.9.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: mvn-jackson-module-scala_2.12-data = %{version}-%{release}
+Requires: mvn-jackson-module-scala_2.12-license = %{version}-%{release}
 
 %description
 [![Build Status](https://travis-ci.org/FasterXML/jackson-module-scala.svg?branch=master)](https://travis-ci.org/FasterXML/jackson-module-scala)
@@ -25,16 +28,33 @@ Group: Data
 data components for the mvn-jackson-module-scala_2.12 package.
 
 
+%package license
+Summary: license components for the mvn-jackson-module-scala_2.12 package.
+Group: Default
+
+%description license
+license components for the mvn-jackson-module-scala_2.12 package.
+
+
 %prep
+%setup -q -n jackson-module-scala-jackson-module-scala-2.6.7.1
 
 %build
 
 %install
+mkdir -p %{buildroot}/usr/share/package-licenses/mvn-jackson-module-scala_2.12
+cp src/main/resources/META-INF/LICENSE %{buildroot}/usr/share/package-licenses/mvn-jackson-module-scala_2.12/src_main_resources_META-INF_LICENSE
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/module/jackson-module-scala_2.12/2.6.7.1
 cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/module/jackson-module-scala_2.12/2.6.7.1/jackson-module-scala_2.12-2.6.7.1.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/module/jackson-module-scala_2.12/2.6.7.1
 cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/module/jackson-module-scala_2.12/2.6.7.1/jackson-module-scala_2.12-2.6.7.1.pom
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/module/jackson-module-scala_2.12/2.9.9
+cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/module/jackson-module-scala_2.12/2.9.9/jackson-module-scala_2.12-2.9.9.jar
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/module/jackson-module-scala_2.12/2.9.9
+cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/module/jackson-module-scala_2.12/2.9.9/jackson-module-scala_2.12-2.9.9.pom
 
 
 %files
@@ -44,3 +64,9 @@ cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/m
 %defattr(-,root,root,-)
 /usr/share/java/.m2/repository/com/fasterxml/jackson/module/jackson-module-scala_2.12/2.6.7.1/jackson-module-scala_2.12-2.6.7.1.jar
 /usr/share/java/.m2/repository/com/fasterxml/jackson/module/jackson-module-scala_2.12/2.6.7.1/jackson-module-scala_2.12-2.6.7.1.pom
+/usr/share/java/.m2/repository/com/fasterxml/jackson/module/jackson-module-scala_2.12/2.9.9/jackson-module-scala_2.12-2.9.9.jar
+/usr/share/java/.m2/repository/com/fasterxml/jackson/module/jackson-module-scala_2.12/2.9.9/jackson-module-scala_2.12-2.9.9.pom
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/mvn-jackson-module-scala_2.12/src_main_resources_META-INF_LICENSE
